@@ -7,10 +7,15 @@ export const List = () => {
     { text: 'Task 2', complited: false, id: 2 }]);
   const [filterText, setFilterText] = useState('');
 
+  const handleAddTask = (value) => {
+    setTasks((oldTasks) => [...oldTasks, { text: value, complited: false, id: nanoid() }]);
+  };
+
   return (
     <TasksLists
       tasks={tasks}
       filterText={filterText}
+      onHandleAddTask={handleAddTask}
     />
   );
 };
