@@ -5,11 +5,30 @@ import { Title } from '../Title/Title';
 import { TaskAddition } from '../TaskAddition/TaskAddition';
 import { TaskSearch } from '../TaskSearch/TaskSearch';
 import { Task } from '../Task/Task';
+import { TaskFilter } from '../TaskFilter/TaskFilter';
+import { SearchFilterWrapper } from './Styled/SearchFilterWrapper';
 
 export const TasksLists = ({
-  tasks, onHandleAddTask, onHandleRemoveTask, onHandleComplition, onHandleSearch, filterText,
+  tasks,
+  onHandleAddTask,
+  onHandleRemoveTask,
+  onHandleComplition,
+  onHandleSearch,
+  filterText,
+  onHandleFilterAction,
+  fileterAction,
 }) => {
-  const handledTasks = tasks.filter((task) => task.text.indexOf(filterText, 0) !== -1);
+  let handledTasks = tasks;
+  if (fileterAction === 'All') {
+    handledTasks = tasks;
+  } else if (fileterAction === 'Active') {
+    handledTasks = tasks.filter((task) => task.complited === false);
+  } else if (fileterAction === 'Done') {
+    handledTasks = tasks.filter((task) => task.complited === true);
+  }
+  if (filterText) {
+    handledTasks = tasks.filter((task) => task.text.indexOf(filterText, 0) !== -1);
+  }
   return (
     <TaskListWrapper>
       <Title />
@@ -29,7 +48,10 @@ export const TasksLists = ({
                 );
               })
           }
-      <TaskSearch handleSearch={onHandleSearch} />
+      <SearchFilterWrapper>
+        <TaskSearch handleSearch={onHandleSearch} />
+        <TaskFilter handleFilterAction={onHandleFilterAction} />
+      </SearchFilterWrapper>
     </TaskListWrapper>
   );
 };

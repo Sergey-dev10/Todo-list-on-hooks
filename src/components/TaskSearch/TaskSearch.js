@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { TaskSearchWrapper } from './Styled/TaskSearchWrapper';
 import { InputSearch } from './Styled/InputSearch';
 
 export const TaskSearch = ({ handleSearch }) => {
@@ -10,8 +9,6 @@ export const TaskSearch = ({ handleSearch }) => {
     setInputValue(value);
   };
   return (
-    <TaskSearchWrapper>
-      <InputSearch type="text" placeholder="type to search" onChange={onHandleSearch} />
-    </TaskSearchWrapper>
+    <InputSearch type="text" placeholder="type to search" onChange={onHandleSearch} />
   );
 };

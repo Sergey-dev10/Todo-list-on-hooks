@@ -6,6 +6,7 @@ export const List = () => {
   const [tasks, setTasks] = useState([{ text: 'Task 1', complited: false, id: 1 },
     { text: 'Task 2', complited: false, id: 2 }]);
   const [filterText, setFilterText] = useState('');
+  const [fileterAction, setFilterAction] = useState('');
 
   const handleAddTask = (value) => {
     if (value) {
@@ -27,15 +28,18 @@ export const List = () => {
     setTasks(finalTasks);
   };
   const handleSearch = (value) => setFilterText(value);
+  const handleFilterAction = (value) => setFilterAction(value);
 
   return (
     <TasksLists
       tasks={tasks}
       filterText={filterText}
+      fileterAction={fileterAction}
       onHandleAddTask={handleAddTask}
       onHandleRemoveTask={handleRemoveTask}
       onHandleComplition={handleComplition}
       onHandleSearch={handleSearch}
+      onHandleFilterAction={handleFilterAction}
     />
   );
 };
