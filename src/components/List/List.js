@@ -8,7 +8,9 @@ export const List = () => {
   const [filterText, setFilterText] = useState('');
 
   const handleAddTask = (value) => {
-    setTasks((oldTasks) => [...oldTasks, { text: value, complited: false, id: nanoid() }]);
+    if (value) {
+      setTasks((oldTasks) => [...oldTasks, { text: value, complited: false, id: nanoid() }]);
+    }
   };
   const handleRemoveTask = (id) => {
     const finalTasks = tasks.filter((task) => task.id !== id);

@@ -7,7 +7,8 @@ export const TaskAddition = ({ handleAddTask }) => {
   const [inputValue, setInputValue] = useState('');
 
   const handleChangeInput = (event) => {
-    setInputValue(event.target.value);
+    const value = event.target.value.trim();
+    setInputValue(value);
   };
   const handleSubmit = (event) => {
     event.preventDefault();
