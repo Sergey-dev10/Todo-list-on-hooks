@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
 export const TaskListWrapper = styled.div`
-    width: 45%;
+    width: 28%;
     margin: 10% auto;
 `;
